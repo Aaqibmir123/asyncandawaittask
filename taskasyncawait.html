@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const posts = [
+    { title: 'Post One', body: 'This is post one', createdAt: new Date().getTime() },
+    { title: 'Post Two', body: 'This is post two', createdAt: new Date().getTime() }
+];
+       function createPosts(post) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            posts.push({ ...post, createdAt: new Date().getTime() });
+            const error = false;
+            if (!error) {
+                resolve();
+            } else {
+                reject('Error: Something went wrong');
+            }
+        }, 1000);
+    })
+}
+
+var arr=[];
+
+
+const create=async()=>{
+   
+    var post=new Promise((res,rej)=>{
+   
+       arr.push(res({name:"mir",phone:"55555"}));
+      
+    })
+    let post1= await post;
+
+    return post1;
+}
+create().then((post)=>{
+    console.log(post)
+})
+
+
+const del=async()=>{
+const dele=new Promise((res,rej)=>{
+    if(arr.length >0){
+        res(arr.pop());
+    }
+})
+
+let del1= await dele;
+return del1;
+}
+del().then((del1)=>{
+    console.log(del1);
+})
+
+// createPosts({ title: 'Post Three', body: 'This is post three' });
+
+    function deletePost() {
+           return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  if (posts.length) {
+                      posts.pop();
+                      resolve();
+                       console.log('resolve');
+                        // deletePost();
+                 } else {
+                      reject('Error: Array is empty now.');
+                   }
+                }, 1000);
+            })
+         }
+
+
+
+         //using more and more callbacks in out code it becomes so 
+         //tough to understand it looks like a hell in our code
+         //so to over come fromt this we use promises
+    </script>
+</body>
+</html>
